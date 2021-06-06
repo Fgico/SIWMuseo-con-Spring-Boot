@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='Home MAM')"> </head>
+<body>
+    	<div th:replace = "fragments/base.html :: navBar">
+    	</div>
+    	<h1 th:replace = "fragments/base.html :: titoloMuseo"></h1>
+    <div class = "homepic">
+      <img class="homeimg" src = "images/eroreSuBattitura.png">
+      <img class="homeimg" src = "images/latteVersato.png">
+    </div>
+      <div class = "homepic">
+        <img class="homeimg" src = "images/telaBucata.png">
+        <img class="homeimg" src = "images/starnutoSuTela.png">
+    </div>
+ 	<div th:replace ="fragments/base.html :: fondo"></div>
+</body>
+</html>

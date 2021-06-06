@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=#{titoloCreaArtista})"> </head>
+<body>
+	<div th:replace="fragments/base.html :: navBar"></div>
+	<div>
+		<h1 th:text="#{insertArtist}"> Inserisci dati Artista</h1>
+	</div>
+	<form th:action="@{/admin/addartist}" method="POST" th:object="${artista}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div>
+			<div>
+				<span th:text="#{nomeLabel}">Nome:</span>
+				<span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>		
+			<div>
+				<span th:text="#{cognomeLabel}">Cognome:</span>
+				<span><input type="text" th:field="*{cognome}" /></span>
+				<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+			</div>
+			<div>
+				<span th:text="#{nazionalitaLabel}">Nazionalita':</span>
+				<span><input type="text" th:field="*{nazionalita}" /></span>
+				<span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></span>
+			</div>
+			<div>
+				<span th:text="#{luogoNascitaLabel}">Luogo di nascita:</span>
+				<span><input type="text" th:field="*{luogoNascita}" /></span>
+				<span th:if="${#fields.hasErrors('luogoNascita')}" th:errors="*{luogoNascita}"></span>
+			</div>
+			<div>
+				<span th:text="#{dataNascitaLabel}">Data di nascita:</span>
+				<span>
+					<input type="date" th:field="*{dataNascita}"
+       					min="0001-01-01">
+				</span>
+				<span th:if="${#fields.hasErrors('dataNascita')}" th:errors="*{dataNascita}"></span>
+			</div>
+			<div>
+				<span th:text="#{luogoMorteLabel}">Luogo di morte:</span>
+				<span><input type="text" th:field="*{luogoMorte}" /></span>
+				<span th:if="${#fields.hasErrors('luogoMorte')}" th:errors="*{luogoMorte}"></span>
+			</div>
+			<div>
+				<span th:text="#{dataMorteLabel}">Data di morte:</span>
+				<span>
+					<input type="date" th:field="*{dataMorte}"
+       					min="0001-01-01">
+				</span>
+				<span th:if="${#fields.hasErrors('dataMorte')}" th:errors="*{dataMorte}"></span>
+			</div>
+			<div>
+				<span><button type="submit" th:text="#{invia}">Invia</button></span>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,87 @@
+body{
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+ #logbut{
+    color : black;
+   border : 15px;
+   float: right;
+}
+
+#logbutt{
+  text-align:right;
+  padding-right:7px;
+  padding-bottom: 2px;
+}
+
+#navBar{
+  border : 2px solid green;
+  background-color : lightgreen;
+  display : inline-block;
+  width : 100%;
+  position : sticky;
+  top : 0px;
+  border-radius: 8px;
+}
+
+.iterableContainer{
+	border : 2px solid black;
+	display : inline-block;
+  width : 100%;
+  border-radius: 8px;
+}
+
+.iconcinaCestino{
+	float:right;
+	padding-right: 1em;
+}
+
+.iterableElement{
+	color : black;
+	margin-left: 1em;
+}
+
+h1{
+  text-align : center;
+}
+
+
+.navbutt{
+  color : black;
+  background-color: lightgreen;
+  margin-left: 5px;
+}
+
+.homeimg {
+  width : 49%;
+}
+
+.operaFull{
+	border :solid 3px;
+}
+
+#operaContFullDes{
+	width:50%;
+	float: right;
+}
+
+.thumbimg{
+		float : left;
+		height : 3em;
+		width: 3em;
+	}
+
+#addimagebut{
+	float:right;
+}
+
+.iconcinaCestino{
+	width: 2em;
+}
+#footer{
+	float : bottom;
+}
+
+#footerimage {
+	width:99%;
+}

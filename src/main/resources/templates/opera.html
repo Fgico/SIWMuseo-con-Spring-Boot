@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://vvv.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/base.html :: headerfiles(title=#{Opera})"> </head>
+<body>
+	<div th:replace="fragments/base.html :: navBar"></div>
+	<div th:object="${opera}">
+	<div>
+    	<h1 th:text="*{titolo}">Opera</h1>
+    	<a id ="addimagebut" th:href="@{'/admin/addimage/'+${opera.id}}" th:text="#{aggiornaImmagine}">
+    	</a>
+    </div>
+    	<span id="operaContFull">
+    		<img th:if="${opera.imageUrl != null}" class="operaFull" th:src="(@{${opera.imageUrl}})" />
+    	</span>
+    	<span id="operaContFullDes">
+		<div  th:if="*{annoCreazione != null}" >
+			<span th:text="#{operaCreataLabel}+' '+*{annoCreazione.toString()}"></span>
+		</div>
+		<div th:text="#{creatoreLabel}"></div>
+			<div ><a  href="/artisti" 
+				   th:href="@{'/artisti' + '/' + ${opera.creatore.id}}" 
+				   th:text="${opera.creatore.nome}+' '+${opera.creatore.cognome}">Nessun Autore</a> 
+			</div>
+		</span>		
+	</div>
+</body>
+</html>

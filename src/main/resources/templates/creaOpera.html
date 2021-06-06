@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=#{titoloCreaOpera})"> </head>
+<body>
+	<div th:replace="fragments/base.html :: navBar"></div>
+	<div>
+		<h1 th:text="#{insertOpera}"> Inserisci dati Opera</h1>
+	</div>
+	<form th:action="@{'/admin/addopera' + '/' + ${id}}" method="POST" th:object="${opera}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div>
+			<div>
+				<span th:text="#{titoloLabel}">Titolo::</span>
+				<span><input type="text" th:field="*{titolo}" /></span>
+				<span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
+			</div>		
+			<div>
+				<span th:text="#{annoCreazioneLabel}">Anno della creazione::</span>
+				<span>
+					<input type="date" th:field="*{annoCreazione}"
+       					min="0001-01-01">
+				</span>
+				<span th:if="${#fields.hasErrors('annoCreazione')}" th:errors="*{annoCreazione}"></span>
+			</div>
+			<div>
+				<span><button type="submit" th:text="#{invia}">Invia</button></span>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

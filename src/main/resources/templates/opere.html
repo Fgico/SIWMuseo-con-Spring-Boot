@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://vvv.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/base.html :: headerfiles(title=#{Opere})"> </head>
+<body>
+	<div th:replace="fragments/base.html :: navBar"></div>
+	<div>
+    	<h1 th:text="#{listaOpereTitolo}">Le opere piu' pregiate</h1> 
+    	
+		<ul>
+			<div class="iterableContainer" th:each="o : ${opere}">
+				<span class="thumbimg">
+					<img class="thumbimg" th:if="${o.imageUrl != null}" th:src="(@{${o.imageUrl}})" />
+				</span>
+				<span>
+				<a class ="iterableElement" href="opera.html" 
+				   th:href="@{'/opere' + '/' + ${o.id}}" 
+				   th:text="${o.titolo}">Nessun Opera</a>
+				</span>
+				<span class="deleteBin" sec:authorize="isAuthenticated()">
+				<a th:href="@{'/admin/delete/opera/' + ${o.id}}">
+				<img class="iconcinaCestino" src="/images/cestino.png">
+				</a>
+				</span>
+				<div>
+				<a th:href="@{'/artisti/'+${o.creatore.id}}" th:text="'Artista:  '+${o.creatore.nome}+' '+${o.creatore.cognome}"></a>
+				</div>
+			</div>
+		</ul>
+	</div>
+</body>
+</html>

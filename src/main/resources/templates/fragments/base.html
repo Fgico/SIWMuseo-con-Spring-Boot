@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://vvv.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:fragment="headerfiles(title)">
+	<meta charset="UTF-8" />
+	<link th:href="@{/css/museo.css}" rel="stylesheet">
+	<title th:text="${title}"></title>
+</head>
+<body>
+	<div id = "navBar" th:fragment="navBar">
+      <a class = "navbutt" href = "/home" > Home</a>
+      <a class = "navbutt" href = "/artisti" th:text="#{Artisti}" > Artisti</a>
+      <a class = "navbutt" href = "/opere" th:text="#{Opere}"> Opere</a>
+      <a class = "navbutt" href = "/collezioni" th:text="#{Collezioni}"> Collezioni</a>
+      <a class = "navbutt" href = "/info" > Info</a>
+      <span id = "logbutt">
+        <a sec:authorize="isAnonymous()"
+        	id = "logbut" 
+         th:href="@{'/' + 'login'}" 
+         th:text ="login">  </a>
+         <a sec:authorize="isAuthenticated()"
+        	id = "logbut" 
+         th:href="@{'/' + 'logout'}" 
+         th:text ="logout">  </a>
+      </span>
+      </div>
+    <h1 th:fragment="titoloMuseo" th:text="#{titolomuseo}" id = "title"> Museo delle arti maldestre</h1>
+	<div th:fragment="fondo" id="footer">
+ 	<img id="footerimage" src="images/footer.png">
+ 	</div>
+</body>
+</html>

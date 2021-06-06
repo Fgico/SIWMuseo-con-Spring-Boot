@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://vvv.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/base.html :: headerfiles(title=#{Collezioni})"> </head>
+<body>
+	<div th:replace="fragments/base.html :: navBar"></div>
+	<div>
+    	<h1 th:text="#{listaCollezioniTitolo}">Le nostre Collezioni</h1>
+		<ul>
+			<div class="iterableContainer" th:each="c : ${collezioni}">
+				<span>
+				<a  class ="iterableElement"href="collezione.html" 
+				   th:href="@{'/collezioni' + '/' + ${c.id}}" 
+				   th:text="${c.nome}+' '+${c.curatore.nome}+' '+${c.curatore.cognome}">Nessun Artista</a>
+				</span>
+				<span class="deleteBin" sec:authorize="isAuthenticated()">
+				<a th:href="@{'/admin/delete/collezione/' + ${a.id}}">
+				<img class="iconcinaCestino" src="/images/cestino.png">
+				</a>
+				</span>
+			</div>
+		</ul>
+	</div>
+</body>
+</html>

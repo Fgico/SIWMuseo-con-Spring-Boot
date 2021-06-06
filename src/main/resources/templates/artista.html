@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://vvv.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/base.html :: headerfiles(title=#{Artisti})"> </head>
+<body>
+	<div th:replace="fragments/base.html :: navBar"></div>
+	<div th:object="${artista}">
+    	<h1 th:text="*{nome}+' '+*{cognome}">Lista degli artisti</h1>
+		<ul>
+			<div th:if="${artista.nazionalita != null}" >
+			<span th:text="#{nazionalitaLabel}+' '+*{nazionalita}">
+			</span>
+			</div>
+			<div th:if="${artista.luogoNascita != null}" >
+			<span th:text="#{introNascita}+' '+*{luogoNascita}+' '+#{prefissoData}+' '+*{dataNascita.toString()}"></span>
+			</div>
+			<div th:if="${artista.luogoMorte != null && artista.dataMorte != null}" >
+			<span th:text="#{introMorte}+' '+*{luogoMorte}+' '+#{prefissoData}+' '+*{dataMorte.toString()}"></span>
+			</div>
+			
+		</ul>
+		<div>
+			<span th:text="#{Opere}+':'"></span>
+			<span sec:authorize="isAuthenticated()">
+			<a th:href="@{'/admin/addopera/'+*{id}}">
+			<img class="iconcinaCestino" src="/images/plusIcon.png">
+			</a>
+			</span>
+		</div>
+		<div class="iterableContainer" th:each="o : *{creazioni}">
+				<span class="thumbimg">
+					<img class="thumbimg" th:if="${o.imageUrl != null}" th:src="(@{${o.imageUrl}})" />
+				</span>
+				<span>
+				<a class ="iterableElement" href="opera.html" 
+				   th:href="@{'/opere' + '/' + ${o.id}}" 
+				   th:text="${o.titolo}">Nessun Opera</a>
+				</span>
+				<span class="deleteBin" sec:authorize="isAuthenticated()">
+				<a th:href="@{'/admin/delete/opera/' + ${o.id}}">
+				<img class="iconcinaCestino" src="/images/cestino.png">
+				</a>
+				</span>
+			</div>
+</body>
+</html>

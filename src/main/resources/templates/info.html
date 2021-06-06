@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='Info MAM')"> </head>
+<body>
+	<div th:replace="fragments/base.html :: navBar"></div>
+    <div>
+    	<h1 th:text="#{Titoloinfo}">Il nostro Museo:</h1>
+		<div th:text="#{infodescrizione}">
+			Noi del Museo delle Arti Maldestre riteniamo che il vero spirito di un artista
+			si intraveda dai suoi errori, per questo abbiamo deciso di collezionare ogni sbavature dei più grandi geni della sbadataggine moderna.
+   		</div>
+    </div>
+    <div th:replace ="fragments/base.html :: fondo"></div>
+</body>
+</html>
